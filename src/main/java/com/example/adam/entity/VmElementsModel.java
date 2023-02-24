@@ -1,22 +1,18 @@
 package com.example.adam.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import lombok.Data;
 
+import javax.persistence.*;
+@Data
 @Entity
-@Table(name = "vm_elements_model")
+@Table(name = "vm_elements")
 public class VmElementsModel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
     @ManyToOne
-    @JoinColumn(name = "server_server_id")
-    private Server server;
+    @JoinColumn(name = "server_id")
+    private Server serverId;
 
-    public Server getServer() {
-        return server;
-    }
-
-    public void setServer(Server server) {
-        this.server = server;
-    }
 }

@@ -6,18 +6,18 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "designs")
-public class Design {
+@Table(name = "portfolios")
+public class Portfolio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String name;
+    @Column(name = "portfolio_name")
+    private String portfolioName;
 
-    @Column(nullable = false)
-    private String version;
+    @Column(name = "portfolio_lead")
+    private String portfolioLead;
 
     // constructors, getters, and setters
 }

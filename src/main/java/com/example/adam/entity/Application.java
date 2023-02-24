@@ -12,6 +12,8 @@ public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "ait")
+    private String ait;
 
     @Column(name = "name")
     private String name;
@@ -19,5 +21,7 @@ public class Application {
     @Column(name = "description")
     private String description;
 
-    // constructors, getters, and setters
+    @OneToOne
+    @JoinColumn(name = "portfolio_lead_id", referencedColumnName = "employee_id")
+    private UsersModel portfolioLead;
 }
