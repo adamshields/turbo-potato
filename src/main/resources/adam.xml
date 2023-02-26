@@ -1,0 +1,266 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="ashields (generated)" id="1677447665397-1">
+        <createTable tableName="applications">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="ait" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="portfolio_lead_id" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-2">
+        <createTable tableName="car">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="make" type="VARCHAR(255)"/>
+            <column name="brand" type="VARCHAR(255)"/>
+            <column name="price" type="DOUBLE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-3">
+        <createTable tableName="design_revisions">
+            <column autoIncrement="true" name="design_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="app_id" type="INT"/>
+            <column name="app_impact_id" type="INT"/>
+            <column name="approval_status" type="VARCHAR(255)"/>
+            <column name="approved_by" type="VARCHAR(255)"/>
+            <column name="design_approval" type="VARCHAR(255)"/>
+            <column name="design_base" type="VARCHAR(255)"/>
+            <column name="design_name" type="VARCHAR(255)"/>
+            <column name="design_status" type="VARCHAR(255)"/>
+            <column name="design_version" type="VARCHAR(255)"/>
+            <column name="is_approved" type="BIT(1)"/>
+            <column name="level1approval" type="BIT(1)"/>
+            <column name="level2approval" type="BIT(1)"/>
+            <column name="level3approval" type="BIT(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-4">
+        <createTable tableName="file_systems_model">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="server_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-5">
+        <createTable tableName="internal_disks">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="server_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-6">
+        <createTable tableName="locations">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="latitude" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="longitude" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="place" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-7">
+        <createTable tableName="physical_elements">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="server_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-8">
+        <createTable tableName="portfolios">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="portfolio_lead" type="VARCHAR(255)"/>
+            <column name="portfolio_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-9">
+        <createTable tableName="server_deployment">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-10">
+        <createTable tableName="server_eth_ports">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="server_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-11">
+        <createTable tableName="server_hbas">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="server_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-12">
+        <createTable tableName="server_ips">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="server_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-13">
+        <createTable tableName="servers">
+            <column autoIncrement="true" name="server_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="id" type="VARCHAR(255)"/>
+            <column name="active_record" type="INT"/>
+            <column name="app_id" type="INT"/>
+            <column name="cores" type="INT"/>
+            <column name="dc_mailcode" type="VARCHAR(255)"/>
+            <column name="domain" type="VARCHAR(255)"/>
+            <column name="fqdn" type="VARCHAR(255)"/>
+            <column name="hostname" type="VARCHAR(255)"/>
+            <column name="ip_address" type="VARCHAR(255)"/>
+            <column name="ip_gateway" type="VARCHAR(255)"/>
+            <column name="ip_mask" type="VARCHAR(255)"/>
+            <column name="org_unit" type="VARCHAR(255)"/>
+            <column name="os_maj_version" type="VARCHAR(255)"/>
+            <column name="patch_group" type="VARCHAR(255)"/>
+            <column name="ram" type="INT"/>
+            <column name="release_pod" type="VARCHAR(255)"/>
+            <column name="resource_id" type="INT"/>
+            <column name="serial_number" type="VARCHAR(255)"/>
+            <column name="server_model" type="VARCHAR(255)"/>
+            <column name="server_profile" type="VARCHAR(255)"/>
+            <column name="timezone" type="VARCHAR(255)"/>
+            <column name="deployment_group_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-14">
+        <createTable tableName="users">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="location_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-15">
+        <createTable tableName="users_model">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="employee_id" type="VARCHAR(255)">
+                <constraints unique="true"/>
+            </column>
+            <column name="user_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-16">
+        <createTable tableName="vm_elements">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="server_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-17">
+        <createIndex indexName="FK3pywyj2mu9lrntn1asnxvgcv9" tableName="vm_elements">
+            <column name="server_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-18">
+        <createIndex indexName="FK3te3tx9mh6amm501c53e44wnk" tableName="physical_elements">
+            <column name="server_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-19">
+        <createIndex indexName="FK6d1hbr7sbnkr5l4c548sm49by" tableName="file_systems_model">
+            <column name="server_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-20">
+        <createIndex indexName="FK6n3uqksigiss13p1otk1yslt3" tableName="server_hbas">
+            <column name="server_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-21">
+        <createIndex indexName="FKdk0xfnnthbj8afp1ira6sndte" tableName="users">
+            <column name="location_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-22">
+        <createIndex indexName="FKf1g9xxt6jnj6xnddk9x6n9q5u" tableName="server_eth_ports">
+            <column name="server_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-23">
+        <createIndex indexName="FKfydn75jv8db8yo4je9tlgtgqy" tableName="server_ips">
+            <column name="server_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-24">
+        <createIndex indexName="FKh3ytlq2k320xlcuf8qb243akb" tableName="internal_disks">
+            <column name="server_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-25">
+        <createIndex indexName="FKk6503djw7xoytvekd3167ti0v" tableName="applications">
+            <column name="portfolio_lead_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-26">
+        <createIndex indexName="FKnhxn1a25vegwnlqlkr8ti8hfg" tableName="servers">
+            <column name="deployment_group_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-27">
+        <addForeignKeyConstraint baseColumnNames="server_id" baseTableName="vm_elements" constraintName="FK3pywyj2mu9lrntn1asnxvgcv9" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="server_id" referencedTableName="servers" validate="true"/>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-28">
+        <addForeignKeyConstraint baseColumnNames="server_id" baseTableName="physical_elements" constraintName="FK3te3tx9mh6amm501c53e44wnk" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="server_id" referencedTableName="servers" validate="true"/>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-29">
+        <addForeignKeyConstraint baseColumnNames="server_id" baseTableName="file_systems_model" constraintName="FK6d1hbr7sbnkr5l4c548sm49by" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="server_id" referencedTableName="servers" validate="true"/>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-30">
+        <addForeignKeyConstraint baseColumnNames="server_id" baseTableName="server_hbas" constraintName="FK6n3uqksigiss13p1otk1yslt3" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="server_id" referencedTableName="servers" validate="true"/>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-31">
+        <addForeignKeyConstraint baseColumnNames="location_id" baseTableName="users" constraintName="FKdk0xfnnthbj8afp1ira6sndte" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="locations" validate="true"/>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-32">
+        <addForeignKeyConstraint baseColumnNames="server_id" baseTableName="server_eth_ports" constraintName="FKf1g9xxt6jnj6xnddk9x6n9q5u" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="server_id" referencedTableName="servers" validate="true"/>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-33">
+        <addForeignKeyConstraint baseColumnNames="server_id" baseTableName="server_ips" constraintName="FKfydn75jv8db8yo4je9tlgtgqy" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="server_id" referencedTableName="servers" validate="true"/>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-34">
+        <addForeignKeyConstraint baseColumnNames="server_id" baseTableName="internal_disks" constraintName="FKh3ytlq2k320xlcuf8qb243akb" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="server_id" referencedTableName="servers" validate="true"/>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-35">
+        <addForeignKeyConstraint baseColumnNames="portfolio_lead_id" baseTableName="applications" constraintName="FKk6503djw7xoytvekd3167ti0v" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="employee_id" referencedTableName="users_model" validate="true"/>
+    </changeSet>
+    <changeSet author="ashields (generated)" id="1677447665397-36">
+        <addForeignKeyConstraint baseColumnNames="deployment_group_id" baseTableName="servers" constraintName="FKnhxn1a25vegwnlqlkr8ti8hfg" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="server_deployment" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
