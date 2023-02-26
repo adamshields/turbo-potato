@@ -1,17 +1,4 @@
 spring:
-  datasource:
-    username: serverdbadmin
-    password: 12345
-    url: jdbc:mysql://localhost:3306/serverdb
-  jpa:
-    hibernate:
-      ddl-auto: create
-    properties:
-      dialect: org.hibernate.dialect.MySQL8Dialect
-      format_sql: true
-    show-sql: true
-  profiles:
-    active: dev
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
@@ -19,3 +6,8 @@ springdoc:
   version: '@springdoc.version@'
   swagger-ui:
     path: /swagger
+  openapi:
+    info:
+      title: Your Application Name
+      description: Your Application Description
+      version: 1.0.0
