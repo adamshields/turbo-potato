@@ -5,8 +5,8 @@ import lombok.Data;
 import javax.persistence.*;
 @Data
 @Entity
-@Table(name = "file_systems_model")
-public class FileSystemsModel {
+@Table(name = "server_hba")
+public class ServerHBA {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

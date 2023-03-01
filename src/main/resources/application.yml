@@ -4,6 +4,7 @@ spring:
       matching-strategy: ant_path_matcher
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
+    enabled: false
 springdoc:
   version: '@springdoc.version@'
   swagger-ui:

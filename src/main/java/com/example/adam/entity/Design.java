@@ -3,17 +3,15 @@ package com.example.adam.entity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
 @Table(name = "design_revisions")
-public class DesignModel {
+public class Design {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(description = "Design ID")
@@ -28,6 +26,16 @@ public class DesignModel {
     private String designStatus="Future";
     private String designBase;
     private String designApproval="Draft";
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "design_application",
+            joinColumns = @JoinColumn(name = "design_id"),
+            inverseJoinColumns = @JoinColumn(name = "application_id"))
+    private Set<Application> applications = new HashSet<>();
+
+
+    @OneToMany(mappedBy = "design", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Server> servers = new HashSet<>();
 
     private String approvedBy;
     private String approvalStatus;

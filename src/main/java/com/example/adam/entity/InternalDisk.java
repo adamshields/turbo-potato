@@ -5,8 +5,8 @@ import lombok.Data;
 import javax.persistence.*;
 @Data
 @Entity
-@Table(name = "internal_disks")
-public class InternalDisksModel {
+@Table(name = "internal_disk")
+public class InternalDisk {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

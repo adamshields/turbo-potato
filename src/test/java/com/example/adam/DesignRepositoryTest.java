@@ -1,6 +1,6 @@
 package com.example.adam;
 
-import com.example.adam.entity.DesignModel;
+import com.example.adam.entity.Design;
 import com.example.adam.repository.DesignRepository;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,8 +31,8 @@ public class DesignRepositoryTest {
 
     @Test
     public void testFindById() {
-        // Create a new DesignModel and save it to the database
-        DesignModel design = new DesignModel();
+        // Create a new Design and save it to the database
+        Design design = new Design();
         design.setDesignName("Test Design");
         design.setAppImpactId(1);
         design.setAppId(2);
@@ -41,12 +41,12 @@ public class DesignRepositoryTest {
         design.setDesignApproval("Draft");
         designRepository.save(design);
 
-        // Retrieve the DesignModel from the database using its ID
-        Optional<DesignModel> result = designRepository.findById(design.getDesignId());
+        // Retrieve the Design from the database using its ID
+        Optional<Design> result = designRepository.findById(design.getDesignId());
 
-        // Verify that the retrieved DesignModel matches the original DesignModel
+        // Verify that the retrieved Design matches the original Design
         assertTrue(result.isPresent());
-        DesignModel retrievedDesign = result.get();
+        Design retrievedDesign = result.get();
         assertEquals(design.getDesignName(), retrievedDesign.getDesignName());
         assertEquals(design.getAppImpactId(), retrievedDesign.getAppImpactId());
         assertEquals(design.getAppId(), retrievedDesign.getAppId());

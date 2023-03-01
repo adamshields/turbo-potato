@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "servers")
+@Table(name = "server")
 public class Server {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,47 +27,52 @@ public class Server {
     private String ipAddress;
     private String ipMask;
     private String ipGateway;
-    private String Id;
+    private String clusterId;
     private String serverProfile;
     private String releasePod;
     private Integer resourceId;
     private Integer activeRecord;
     private Integer appId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "design_id")
+    private Design design;
+
     @OneToMany(mappedBy = "serverId", cascade = CascadeType.ALL)
-    private List<VmElementsModel> vmElements;
+    private List<VmElement> vmElements;
     @OneToMany(mappedBy = "serverId", cascade = CascadeType.ALL)
-    private List<PhysicalElementsModel> physicalElements;
+    private List<PhysicalElement> physicalElements;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "serverId")
-    private List<ServerIPsModel> secondaryIPs = new ArrayList<>();
+    private List<ServerIP> secondaryIPs = new ArrayList<>();
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "serverId")
-    private List<FileSystemsModel> fileSystems = new ArrayList<>();
+    private List<FileSystem> fileSystems = new ArrayList<>();
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "serverId")
-    private List<EthernetPortsModel> ethernetPorts = new ArrayList<>();
+    private List<EthernetPort> ethernetPorts = new ArrayList<>();
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "serverId")
-    private List<ServerHBAsModel> HBAs = new ArrayList<>();
+    private List<ServerHBA> HBAs = new ArrayList<>();
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "serverId")
-    private List<InternalDisksModel> internalDisks = new ArrayList<>();
+    private List<InternalDisk> internalDisks = new ArrayList<>();
     @ManyToOne
     @JoinColumn(name = "deployment_group_id", insertable = false)
-    private DeploymentGroupModel deploymentGroup;
-    public void setSecondaryIPs(List<ServerIPsModel> secondaryIPs) {
+    private DeploymentGroup deploymentGroup;
+    public void setSecondaryIPs(List<ServerIP> secondaryIPs) {
         this.secondaryIPs.addAll(secondaryIPs);
     }
-    public void setFileSystems(List<FileSystemsModel> fileSystems) {
+    public void setFileSystems(List<FileSystem> fileSystems) {
         this.fileSystems.addAll(fileSystems);
     }
-    public void setEthernetPorts(List<EthernetPortsModel> ethernetPorts) {
+    public void setEthernetPorts(List<EthernetPort> ethernetPorts) {
         this.ethernetPorts.addAll(ethernetPorts);
     }
-    public void setHBAs(List<ServerHBAsModel> HBAs) {
+    public void setHBAs(List<ServerHBA> HBAs) {
         this.HBAs.addAll(HBAs);
     }
-    public void setInternalDisks(List<InternalDisksModel> internalDisks) {
+    public void setInternalDisks(List<InternalDisk> internalDisks) {
         this.internalDisks.addAll(internalDisks);
     }
 }
