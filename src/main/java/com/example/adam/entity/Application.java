@@ -26,9 +26,9 @@ public class Application {
     @ManyToMany(mappedBy = "applications")
     private List<Design> designs = new ArrayList<>();
 
-    public List<Design> getDesigns() {
-        return designs;
-    }
+//    public List<Design> getDesigns() {
+//        return designs;
+//    }
 
     @OneToOne
     @JoinColumn(name = "portfolio_lead_id", referencedColumnName = "employee_id")

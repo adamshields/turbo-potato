@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-@EntityScan(basePackages = {"com.example.adam.entity"})
+//@EntityScan(basePackages = {"com.example.adam.entity"})
 public class AdamApplication {
 
 	@Bean

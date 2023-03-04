@@ -34,47 +34,47 @@ public class Server {
     private Integer activeRecord;
     private Integer appId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "design_id")
-    private Design design;
-
-    @OneToMany(mappedBy = "serverId", cascade = CascadeType.ALL)
-    private List<VmElement> vmElements;
-    @OneToMany(mappedBy = "serverId", cascade = CascadeType.ALL)
-    private List<PhysicalElement> physicalElements;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "serverId")
-    private List<ServerIP> secondaryIPs = new ArrayList<>();
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "serverId")
-    private List<FileSystem> fileSystems = new ArrayList<>();
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "serverId")
-    private List<EthernetPort> ethernetPorts = new ArrayList<>();
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "serverId")
-    private List<ServerHBA> HBAs = new ArrayList<>();
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "serverId")
-    private List<InternalDisk> internalDisks = new ArrayList<>();
-    @ManyToOne
-    @JoinColumn(name = "deployment_group_id", insertable = false)
-    private DeploymentGroup deploymentGroup;
-    public void setSecondaryIPs(List<ServerIP> secondaryIPs) {
-        this.secondaryIPs.addAll(secondaryIPs);
-    }
-    public void setFileSystems(List<FileSystem> fileSystems) {
-        this.fileSystems.addAll(fileSystems);
-    }
-    public void setEthernetPorts(List<EthernetPort> ethernetPorts) {
-        this.ethernetPorts.addAll(ethernetPorts);
-    }
-    public void setHBAs(List<ServerHBA> HBAs) {
-        this.HBAs.addAll(HBAs);
-    }
-    public void setInternalDisks(List<InternalDisk> internalDisks) {
-        this.internalDisks.addAll(internalDisks);
-    }
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "design_id")
+//    private Design design;
+////
+//    @OneToMany(mappedBy = "serverId", cascade = CascadeType.ALL)
+//    private List<VmElement> vmElements;
+//    @OneToMany(mappedBy = "serverId", cascade = CascadeType.ALL)
+//    private List<PhysicalElement> physicalElements;
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name = "serverId")
+//    private List<ServerIP> secondaryIPs = new ArrayList<>();
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name = "serverId")
+//    private List<FileSystem> fileSystems = new ArrayList<>();
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name = "serverId")
+//    private List<EthernetPort> ethernetPorts = new ArrayList<>();
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name = "serverId")
+//    private List<ServerHBA> HBAs = new ArrayList<>();
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name = "serverId")
+//    private List<InternalDisk> internalDisks = new ArrayList<>();
+//    @ManyToOne
+//    @JoinColumn(name = "deployment_group_id", insertable = false)
+//    private DeploymentGroup deploymentGroup;
+//    public void setSecondaryIPs(List<ServerIP> secondaryIPs) {
+//        this.secondaryIPs.addAll(secondaryIPs);
+//    }
+//    public void setFileSystems(List<FileSystem> fileSystems) {
+//        this.fileSystems.addAll(fileSystems);
+//    }
+//    public void setEthernetPorts(List<EthernetPort> ethernetPorts) {
+//        this.ethernetPorts.addAll(ethernetPorts);
+//    }
+//    public void setHBAs(List<ServerHBA> HBAs) {
+//        this.HBAs.addAll(HBAs);
+//    }
+//    public void setInternalDisks(List<InternalDisk> internalDisks) {
+//        this.internalDisks.addAll(internalDisks);
+//    }
 }
 
 
