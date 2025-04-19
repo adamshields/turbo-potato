@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <!-- Optional: main table -->
+    <changeSet id="1" author="adam">
+        <createTable tableName="element">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="current_version_id" type="BIGINT"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Versioning table -->
+    <changeSet id="2" author="adam">
+        <createTable tableName="element_version">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="element_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_element_version_element" references="element(id)"/>
+            </column>
+            <column name="version_number" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="resource_data" type="JSON">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- Optional: Index for fast lookups -->
+    <changeSet id="3" author="adam">
+        <createIndex tableName="element_version" indexName="idx_element_id_version">
+            <column name="element_id"/>
+            <column name="version_number"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>
