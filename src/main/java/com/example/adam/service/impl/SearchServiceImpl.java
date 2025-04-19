@@ -1,5 +1,6 @@
 package com.example.adam.service.impl;
 
+import com.example.adam.dto.SearchRequestDto;
 import com.example.adam.dto.SearchResultDto;
 import com.example.adam.entity.SearchIndex;
 import com.example.adam.repository.SearchIndexRepository;
@@ -16,10 +17,11 @@ import java.util.stream.Collectors;
 public class SearchServiceImpl implements SearchService {
 
     private final SearchIndexRepository repository;
-
     @Override
-    public List<SearchResultDto> search(String keyword) {
-        return repository.findByRawContentContainingIgnoreCase(keyword)
+    public List<SearchResultDto> search(SearchRequestDto request) {
+        String query = request.getQuery();
+
+        return repository.findByRawContentContainingIgnoreCase(query)
                 .stream()
                 .map(index -> {
                     SearchResultDto dto = new SearchResultDto();
@@ -31,6 +33,22 @@ public class SearchServiceImpl implements SearchService {
                 })
                 .collect(Collectors.toList());
     }
+
+
+//    @Override
+//    public List<SearchResultDto> search(String keyword) {
+//        return repository.findByRawContentContainingIgnoreCase(keyword)
+//                .stream()
+//                .map(index -> {
+//                    SearchResultDto dto = new SearchResultDto();
+//                    dto.setId(index.getReferenceId());
+//                    dto.setType(index.getReferenceType());
+//                    dto.setLabel(index.getLabel());
+//                    dto.setSummary(index.getSummary());
+//                    return dto;
+//                })
+//                .collect(Collectors.toList());
+//    }
 
     @Override
     public void index(String type, Long refId, String label, String summary, String rawContent) {

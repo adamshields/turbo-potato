@@ -1,13 +1,11 @@
 package com.example.adam.controller;
 
+import com.example.adam.dto.SearchRequestDto;
 import com.example.adam.dto.SearchResultDto;
 import com.example.adam.service.SearchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,8 +16,14 @@ public class SearchController {
 
     private final SearchService searchService;
 
-    @GetMapping
-    public ResponseEntity<List<SearchResultDto>> search(@RequestParam String q) {
-        return ResponseEntity.ok(searchService.search(q));
+//    @GetMapping
+//    public ResponseEntity<List<SearchResultDto>> search(@RequestParam String q) {
+//        return ResponseEntity.ok(searchService.search(q));
+//    }
+
+    @PostMapping("/search")
+    public ResponseEntity<List<SearchResultDto>> search(@RequestBody SearchRequestDto request) {
+        return ResponseEntity.ok(searchService.search(request));
     }
+
 }
