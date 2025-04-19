@@ -2,9 +2,34 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+
+  datasource:
+    url: jdbc:mysql://localhost:3307/serverdb
+    username: serverdbadmin
+    password: 12345
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  #        dialect: org.hibernate.dialect.MySQLDialect
+
+  h2:
+    console:
+      enabled: false
+
   liquibase:
-    change-log: classpath:db/changelog/db.changelog-master.xml
-    enabled: false
+    change-log: classpath:db/changelog/changelog-master.xml
+    enabled: true
+
+  sql:
+    init:
+      mode: never
+
 springdoc:
   version: '@springdoc.version@'
   swagger-ui:
@@ -14,3 +39,15 @@ springdoc:
       title: Your Application Name
       description: Your Application Description
       version: 1.0.0
+logging:
+  level:
+    org.hibernate.orm.connections.pooling: WARN
+    liquibase: INFO
+    liquibase.lockservice: WARN
+    liquibase.executor: WARN
+    liquibase.database: WARN
+    liquibase.snapshot: WARN
+    liquibase.structure: WARN
+    liquibase.structure.compare: WARN
+    liquibase.changelog: INFO
+    liquibase.change: INFO
