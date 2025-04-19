@@ -1,4 +1,4 @@
-package com.example.adam.service.Impl;
+package com.example.adam.service.impl;
 
 import com.example.adam.dto.ElementCreateRequest;
 import com.example.adam.dto.ElementVersionRequest;
@@ -8,6 +8,7 @@ import com.example.adam.entity.ElementVersion;
 import com.example.adam.repository.ElementRepository;
 import com.example.adam.repository.ElementVersionRepository;
 import com.example.adam.service.ElementService;
+import com.example.adam.service.SearchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,7 @@ public class ElementServiceImpl implements ElementService {
 
     private final ElementRepository elementRepository;
     private final ElementVersionRepository versionRepository;
+    private final SearchService searchService;
 
     @Override
     public Long createElement(ElementCreateRequest request) {
@@ -28,12 +30,24 @@ public class ElementServiceImpl implements ElementService {
         element.setType(request.getType());
         element.setCreatedAt(LocalDateTime.now());
         element.setUpdatedAt(LocalDateTime.now());
-        return elementRepository.save(element).getId();
+
+        Element saved = elementRepository.save(element);
+
+        // Index it
+        searchService.index(
+                "element",
+                saved.getId(),
+                request.getType(),
+                "Created new element",
+                request.getType().toLowerCase()
+        );
+
+        return saved.getId();
     }
 
     @Override
     public ElementVersionResponse addVersion(Long elementId, ElementVersionRequest request) {
-        // Get latest version number
+        // Find the latest version number
         int nextVersion = versionRepository.findByElementIdOrderByVersionNumberDesc(elementId)
                 .stream()
                 .findFirst()
@@ -48,12 +62,21 @@ public class ElementServiceImpl implements ElementService {
 
         ElementVersion saved = versionRepository.save(version);
 
-        // Update current version ID on element
+        // Update current version pointer on element
         Element element = elementRepository.findById(elementId)
                 .orElseThrow(() -> new RuntimeException("Element not found"));
         element.setCurrentVersionId(saved.getId());
         element.setUpdatedAt(LocalDateTime.now());
         elementRepository.save(element);
+
+        // Index version
+        searchService.index(
+                "element_version",
+                saved.getId(),
+                "v" + saved.getVersionNumber(),
+                "New version for element " + elementId,
+                request.getResourceData()
+        );
 
         return mapToResponse(saved);
     }

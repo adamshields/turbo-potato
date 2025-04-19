@@ -7,6 +7,7 @@
 
     <include file="TABLES/city.xml" relativeToChangelogFile="true"/>
     <include file="TABLES/element_version.xml" relativeToChangelogFile="true"/>
+    <include file="TABLES/search_index.xml" relativeToChangelogFile="true"/>
 
 
 </databaseChangeLog>
