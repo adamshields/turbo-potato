@@ -1,0 +1,41 @@
+{
+  "name": "Spring Boot + MySQL Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/java:17",
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "4GB"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/mysql:1": {
+      "version": "8.0",
+      "mysqlDatabase": "serverdb",
+      "mysqlUser": "serverdbadmin",
+      "mysqlPassword": "12345",
+      "port": 3307
+    },
+    "ghcr.io/devcontainers/features/maven:1": {
+      "version": "latest"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "pivotal.vscode-spring-boot",
+        "gabrielbb.vscode-lombok"
+      ]
+    }
+  },
+  "forwardPorts": [8080, 3307],
+  "postCreateCommand": "mvn clean install || true",
+  "portsAttributes": {
+    "8080": {
+      "label": "Spring Boot App",
+      "onAutoForward": "notify"
+    },
+    "3307": {
+      "label": "MySQL",
+      "onAutoForward": "silent"
+    }
+  }
+}
