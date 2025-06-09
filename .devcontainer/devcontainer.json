@@ -6,12 +6,11 @@
     "memory": "4GB"
   },
   "features": {
-    "ghcr.io/devcontainers/features/mysql:1": {
+    "ghcr.io/devcontainers-contrib/features/mysql:1": {
       "version": "8.0",
       "mysqlDatabase": "serverdb",
       "mysqlUser": "serverdbadmin",
-      "mysqlPassword": "12345",
-      "port": 3307
+      "mysqlPassword": "12345"
     },
     "ghcr.io/devcontainers/features/maven:1": {
       "version": "latest"
@@ -26,14 +25,14 @@
       ]
     }
   },
-  "forwardPorts": [8080, 3307],
-  "postCreateCommand": "mvn clean install || true",
+  "forwardPorts": [8080, 3306],
+  "postCreateCommand": "sleep 15 && mvn clean install || true",
   "portsAttributes": {
     "8080": {
       "label": "Spring Boot App",
       "onAutoForward": "notify"
     },
-    "3307": {
+    "3306": {
       "label": "MySQL",
       "onAutoForward": "silent"
     }
