@@ -5,6 +5,7 @@ services:
     image: mcr.microsoft.com/devcontainers/java:17
     volumes:
       - ../..:/workspace:cached
+      - /var/run/docker.sock:/var/run/docker.sock
     working_dir: /workspace
     command: sleep infinity
     depends_on:

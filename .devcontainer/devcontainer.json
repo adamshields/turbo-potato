@@ -3,15 +3,6 @@
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
   "workspaceFolder": "/workspace",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "vscjava.vscode-java-pack",
-        "pivotal.vscode-spring-boot",
-        "gabrielbb.vscode-lombok"
-      ]
-    }
-  },
   "forwardPorts": [8080, 3306],
-  "postCreateCommand": "sleep 20 && mvn clean install || true"
+  "postCreateCommand": "chmod +x mvnw && sudo apt update && sudo apt install -y default-mysql-client docker.io && sudo usermod -aG docker vscode && sleep 20 && ./mvnw clean install || true"
 }
