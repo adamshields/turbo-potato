@@ -16,11 +16,6 @@ spring:
     properties:
       hibernate:
         format_sql: true
-  #        dialect: org.hibernate.dialect.MySQLDialect
-
-  h2:
-    console:
-      enabled: false
 
   liquibase:
     change-log: classpath:db/changelog/changelog-master.xml
@@ -31,14 +26,18 @@ spring:
       mode: never
 
 springdoc:
-  version: '@springdoc.version@'
   swagger-ui:
     path: /swagger
-  openapi:
-    info:
-      title: Your Application Name
-      description: Your Application Description
-      version: 1.0.0
+    try-it-out-enabled: true
+    operationsSorter: method
+    tagsSorter: alpha
+    displayRequestDuration: true
+  api-docs:
+    path: /v3/api-docs
+
+server:
+  forward-headers-strategy: native  # <-- This lets it correctly infer https in Codespaces
+
 logging:
   level:
     org.hibernate.orm.connections.pooling: WARN
