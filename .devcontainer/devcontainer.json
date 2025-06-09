@@ -6,11 +6,8 @@
     "memory": "4GB"
   },
   "features": {
-    "ghcr.io/devcontainers-contrib/features/mysql:1": {
-      "version": "8.0",
-      "mysqlDatabase": "serverdb",
-      "mysqlUser": "serverdbadmin",
-      "mysqlPassword": "12345"
+    "ghcr.io/devcontainers/features/mysql:1": {
+      "version": "8.0"
     },
     "ghcr.io/devcontainers/features/maven:1": {
       "version": "latest"
@@ -26,7 +23,7 @@
     }
   },
   "forwardPorts": [8080, 3306],
-  "postCreateCommand": "sleep 15 && mvn clean install || true",
+  "postCreateCommand": "sleep 15 && sudo mysql -e \"CREATE DATABASE IF NOT EXISTS serverdb; CREATE USER IF NOT EXISTS 'serverdbadmin'@'%' IDENTIFIED BY '12345'; GRANT ALL PRIVILEGES ON serverdb.* TO 'serverdbadmin'@'%'; FLUSH PRIVILEGES;\" && mvn clean install || true",
   "portsAttributes": {
     "8080": {
       "label": "Spring Boot App",
