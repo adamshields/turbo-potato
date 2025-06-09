@@ -4,9 +4,9 @@ services:
   app:
     image: mcr.microsoft.com/devcontainers/java:17
     volumes:
-      - ../..:/workspace:cached
+      - ../..:/workspace/turbo-potato:cached
       - /var/run/docker.sock:/var/run/docker.sock
-    working_dir: /workspace
+    working_dir: /workspace/turbo-potato
     command: sleep infinity
     depends_on:
       - mysql
