@@ -4,7 +4,5 @@
   "service": "app",
   "workspaceFolder": "/workspace/turbo-potato",
   "forwardPorts": [8080, 3306],
-  "postCreateCommand": "chmod +x mvnw",
-  "postStartCommand": "sudo apt update && sudo apt install -y default-mysql-client docker.io && sudo usermod -aG docker vscode",
-  "postAttachCommand": "sleep 20 && ./mvnw clean install || true"
+  "postCreateCommand": "chmod +x mvnw"
 }
