@@ -39,6 +39,8 @@ springdoc:
     path: /v3/api-docs
 
 server:
+  address: 0.0.0.0  # Bind to all interfaces, not just localhost
+  port: 8080
   forward-headers-strategy: native  # <-- This lets it correctly infer https in Codespaces
 
 logging:
