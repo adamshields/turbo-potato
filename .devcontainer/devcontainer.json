@@ -30,7 +30,9 @@
       "label": "Swagger UI",
       "onAutoForward": "openPreview",
       "protocol": "http",
-      "path": "/swagger"
+      "path": "/swagger",
+       "visibility": "public"
+
     }
   }
 }
