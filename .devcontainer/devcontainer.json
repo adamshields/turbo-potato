@@ -10,8 +10,15 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "vscjava.vscode-java-pack"
+        "vscjava.vscode-java-pack",
+        "pivotal.vscode-spring-boot"
       ]
+    }
+  },
+  "portsAttributes": {
+    "8080": {
+      "label": "Swagger UI",
+      "onAutoForward": "openBrowser"
     }
   }
 }
