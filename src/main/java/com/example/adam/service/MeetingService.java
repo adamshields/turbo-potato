@@ -7,9 +7,11 @@ import java.util.List;
 public interface MeetingService {
 
     /**
-     * INTERVIEW CHALLENGE:
+     * MAIN INTERVIEW CHALLENGE:
      *
      * Calculate the total meeting time for a day, accounting for overlapping meetings.
+     *
+     * Algorithm should be O(n log n) time complexity (sorting is expected).
      *
      * Example:
      * - Meeting 1: 09:00-10:30 (90 minutes)
@@ -23,7 +25,7 @@ public interface MeetingService {
      * - Single meeting
      * - Completely overlapping meetings
      * - Adjacent meetings (10:30-11:00)
-     * - Invalid time ranges (end before start)
+     * - Invalid time ranges (end before start) - assume input is always valid
      *
      * @param meetings List of meetings for the day
      * @return Total duration of all meetings (accounting for overlaps)
@@ -31,7 +33,11 @@ public interface MeetingService {
     Duration calculateTotalMeetingTime(List<Meeting> meetings);
 
     /**
-     * BONUS CHALLENGE:
+     * BONUS CHALLENGE (OPTIONAL):
+     *
+     * This is a bonus method - only implement if you complete the main challenge
+     * with time remaining. Focus on calculateTotalMeetingTime first!
+     *
      * Find all conflicting meetings (meetings that overlap in time)
      *
      * @param meetings List of meetings
